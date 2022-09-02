@@ -13,10 +13,21 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<any>('http://localhost:8000/api')
+    this.http.get<any>('https://azure-laravel-demo.azurewebsites.net/api')
       .subscribe(response => {
-        this.users = response.data
+        console.log(response)
+        this.users = response.data.map((item: any, index: any) => {
+            item.color = this.colorGenerator();
+            return item;
+        });
         console.log(response);
       })
+  }
+
+  colorGenerator() {
+    let r = Math.floor(Math.random() * 255);
+    let g = Math.floor(Math.random() * 255);
+    let b = Math.floor(Math.random() * 255);
+    return `rgba(${r}, ${g}, ${b})`;
   }
 }

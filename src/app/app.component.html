@@ -1,28 +1,7 @@
-<style>
-  .cards {
-    padding: 20px 0;
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 10px;
-    row-gap: 10px;
-    justify-content: center;
-  }
-  .card {
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-  .card-img-top {
-    width: 100px;
-  }
-  .card-body {
-    width: 100%;
-  }
-</style>
 
-<div class="cards">
+<div class="cards" *ngIf="users.length">
   <div *ngFor="let user of users">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="background-color: {{ user.color }}">
       <img src="{{ user.avatar }}" class="card-img-top" loading="lazy">
       <div class="card-body">
         <h5 class="card-title">{{ user.first_name }} {{ user?.last_name }}</h5>
@@ -32,6 +11,22 @@
         <span>Gender : {{ user.gender }}</span>
       </div>
     </div>
+  </div>
+</div>
+<div class="loading" *ngIf="!users.length">
+  <div class="lds-default">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </div>
 
