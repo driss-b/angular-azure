@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<any>('https://azure-laravel-demo.azurewebsites.net/api')
+    this.http.get<any>('https://laravel-azure-api.azurewebsites.net/api')
       .subscribe(response => {
         console.log(response)
         this.users = response.data.map((item: any, index: any) => {
